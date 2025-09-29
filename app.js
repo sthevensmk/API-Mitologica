@@ -1,5 +1,6 @@
 import express from "express";
 import Mitologia from "./models/Mitologias.js";
+import User from "./models/Users.js";
 import mitologiaRoutes from "./routes/mitologiaRoutes.js";
 import mongoose from "./config/db-connection.js";
 const app = express();
