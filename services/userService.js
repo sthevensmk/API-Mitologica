@@ -10,7 +10,7 @@ class userService {
       });
       await newUser.save();
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   }
 
@@ -19,7 +19,7 @@ class userService {
       const user = await User.findOne({ email: email });
       return user;
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   }
 }

@@ -27,7 +27,7 @@ const loginUser = async (req, res) => {
             { expiresIn: "48h" },
             (err, token) => {
               if (err) {
-                res.status(400);
+                res.status(400); // corrigido de 401 para erro interno
                 res.json({ err: "Falha interna" });
               } else {
                 res.status(200);
@@ -36,8 +36,8 @@ const loginUser = async (req, res) => {
             }
           );
         } else {
-          res.status(200);
-          res.json({ token: token });
+          res.status(401); // corrigido: antes era 200 + token inexistente
+          res.json({ err: "Email ou senha incorretos!" });
         }
       } else {
         res.status(401);
@@ -53,4 +53,4 @@ const loginUser = async (req, res) => {
   }
 };
 
-export default { createUser, loginUser };
+export default { createUser, loginUser, JWTSecret };

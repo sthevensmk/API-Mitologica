@@ -2,12 +2,15 @@ import express from "express";
 import Mitologia from "./models/Mitologias.js";
 import User from "./models/Users.js";
 import mitologiaRoutes from "./routes/mitologiaRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 import mongoose from "./config/db-connection.js";
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
 app.use("/", mitologiaRoutes);
+app.use("/", userRoutes);
 
 // mongoose.connect("mongodb://127.0.0.1/api-mitologica");
 
