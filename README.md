@@ -6,7 +6,7 @@ Esta API é utilizada para gerenciar um CRUD (criar, ler, atualizar e deletar) d
 
 ## Endpoints
 ### - GET /mitologias
-Esse endpoint é responsável por retornar a listagem de todas as mitologias cadastrados no banco de dados (Atualmente Hospedada na Nuvem).
+Esse endpoint é responsável por retornar a listagem de todas as mitologias cadastrados no banco de dados (Atualmente Hospedado na Nuvem - Mongo Atlas).
 
 #### Parâmetros:
 Nenhum
@@ -93,31 +93,31 @@ Caso essa resposta aconteça, uma nova mitologia é criada e adicionada ao banco
 Exemplo de resposta: Mitologia criada certinho.
 
 ##### Erro Interno do Servidor! 500
-Caso essa resposta aconteça, significa que ocorreu um erro por dentro do servidor.
+Caso essa resposta aconteça, significa que ocorreu um erro dentro do servidor.
 
 Exemplo de resposta:
 
 ```
 {
-    "error": "Erro interno patrão"
+    "error": "Erro interno patrão."
 }
 ```
 
 
-### - DELETE /mitologia/_id
-Esse endpoint é responsável por deletar uma mitologia por seu ID.
+### - DELETE /mitologias/_id
+Esse endpoint é responsável por deletar uma mitologia do banco de dados pelo seu ID.
 
 #### Parâmetros:
 id: ID da mitologia a ser deletada.
 
 #### Respostas:
-##### Sem Conteúdo! 204 / 200 Ok Mitologia deletada com sucessso
+##### Sem Conteúdo! 204 / 200 Ok Delete realizado
 Caso essa resposta aconteça, a mitologia foi deletado com sucesso e não há conteúdo para retornar ao cliente.
 
 Exemplo de resposta: Mitologia deletada com sucesso.
 
 ##### Requisição Inválida! 400
-Caso essa resposta aconteça, significa que o ID ou alguma composição da rota fornecida é inválido.
+Caso essa resposta aconteça, significa que o ID ou alguma composição da rota fornecida foi requisitada de forma incorreta.
 
 Exemplo de resposta:
 
@@ -138,16 +138,16 @@ Exemplo de resposta:
 }
 ```
 
-### - PUT /mitologias
+### - PUT /mitologias/_id
 Esse endpoint é responsável por atualizar as informações de uma mitologia selecionada.
 
 #### Parâmetros:
-id: ID da mitologia a ser atualizada.<br>
-name: Nome da mitologia.<br>
-origin: Origem da mitologia.<.br>
-period: Período do mitologia.<.br>
-summary: Resumo da mitologia.<.br:
-characters: Personagens da mitologia.<.br>
+id: ID da mitologia a ser atualizada.
+name: Nome da mitologia.
+origin: Origem da mitologia.
+period: Período do mitologia.
+summary: Resumo da mitologia.
+characters: Personagens da mitologia.
 
 Exemplo de requisição:
 
@@ -200,13 +200,13 @@ Exemplo de resposta:
 ```
 
 ##### Requisição Inválida! 400
-Caso essa resposta aconteça, significa que o ID fornecido é inválido ou a requisição contém dados malformados.
+Caso essa resposta aconteça, significa que o ID fornecido é inválido ou a requisição contém dados mal construídos.
 
 Exemplo de resposta:
 
 ```
 {
-    "error": "ID inválido"
+    "error": "ID inválido!"
 }
 ```
 
@@ -229,11 +229,10 @@ id: ID da mitologia a ser consultada
 
 #### Respostas:
 ##### OK! 200
-Caso essa resposta aconteça, você vai receber as informações da mitologia solicitado.
+Caso essa resposta aconteça, você vai receber as informações da mitologia solicitada.
 
 Exemplo de resposta:
 
-```
 ```
 {
   "_id": {
@@ -258,7 +257,7 @@ Exemplo de resposta:
 
 ```
 {
-    "err": "Mitologia não encontrada!"
+    "error": "Mitologia não encontrada!"
 }
 ```
 
@@ -280,6 +279,6 @@ Exemplo de resposta:
 
 ```
 {
-    "error": "Erro interno do servidor!"
+    "error": "Erro interno patrão."
 }
 ```
